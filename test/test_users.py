@@ -12,14 +12,15 @@ def test_root():
     assert response.json().get('message') == "Welcome to Python API in Ubuntu"
 
 
-# def test_create_user():
-#     response = client.post("/users/", json={"email": "steve@gmail.com", "password": "1111"})
-#     newuser = schemas.UserResponse(**response.json())
-#     assert response.status_code == 201
-#     assert newuser.email == "steve@gmail.com"
-#     assert newuser.created_at != ""
+def test_create_user():
+    response = client.post("/users/", json={"email": "steve@gmail.com", "password": "1111"})
+    newuser = schemas.UserResponse(**response.json())
+    assert response.status_code == 201
+    assert newuser.email == "steve@gmail.com"
+    assert newuser.created_at != ""
+
 
 def test_login_user():
-    response = client.post("/login", data={"username": "hide@gmail.com", "password": "1111"})
+    response = client.post("/login", data={"username": "steve@gmail.com", "password": "1111"})
     print(response.json())
     assert response.status_code == 200
